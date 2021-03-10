@@ -17,6 +17,11 @@ class BacameterController extends Controller
         DB::table("ms_pelanggan as a")
             ->selectRaw("COALESCE(COUNT(*), 0) as cnt")
             ->join("ms_jenispelanggan_tarif as b", "a.jenis_pelanggan_id", "b.jenispelanggan_id")
+            ->where([
+                ["cabang_id", "=", $rayon->cabang_id],
+                ["wilayah_id", "=", $rayon->wilayah_id],
+                ["blok_id", "=", $rayon->blok_id]
+            ])
             ->get()
             ->pluck("cnt")[0];
 
