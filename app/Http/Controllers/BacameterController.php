@@ -20,7 +20,8 @@ class BacameterController extends Controller
             ->where([
                 ["cabang_id", "=", $rayon->cabang_id],
                 ["wilayah_id", "=", $rayon->wilayah_id],
-                ["blok_id", "=", $rayon->blok_id]
+                ["blok_id", "=", $rayon->blok_id],
+                ["status_id", 1]
             ])
             ->get()
             ->pluck("cnt")[0];
